@@ -1510,21 +1510,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Activar tab por defecto si llegamos a #menu
-  if (window.location.hash === '#menu') {
+  // Detectar si el hash corresponde a un tab específico (como #tab-entrantes)
+  const hash = window.location.hash;
+  if (hash.startsWith('#tab-')) {
+    const targetTab = document.querySelector(`input[name="menu-tab"]${hash}`);
+    if (targetTab) {
+      targetTab.checked = true;
+      targetTab.dispatchEvent(new Event('change'));
+    }
+  } else if (hash === '#menu') {
+    // Si solo es #menu, activa el tab diario
     const defaultTab = document.getElementById('tab-diario');
     if (defaultTab) {
       defaultTab.checked = true;
       defaultTab.dispatchEvent(new Event('change'));
     }
   } else {
-    // Mostrar el tab marcado inicialmente
+    // Mostrar tab por defecto
     const checkedTab = document.querySelector('input[name="menu-tab"]:checked');
     if (checkedTab) {
       showTab(checkedTab.id);
     }
   }
 });
+
 // Subtabs para grupos
 const grupoTabs = document.querySelectorAll('input[name="grupo-tab"]');
 const grupoContents = document.querySelectorAll('.grupo-content');

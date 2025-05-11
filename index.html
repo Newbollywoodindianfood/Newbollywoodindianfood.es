@@ -1525,17 +1525,6 @@ document.getElementById(contentId).classList.add('active');
 });
 });
 });
- window.addEventListener('load', function () {
-  const hash = window.location.hash;
-  if (hash.startsWith('#tab-')) {
-    const radio = document.querySelector(`input[name="menu-tab"]${hash}`);
-    if (radio) {
-      radio.checked = true;
-      radio.dispatchEvent(new Event('change'));
-    }
-  }
-});
-
 </script>
  <script>
   // Carrusel automático

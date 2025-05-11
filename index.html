@@ -1530,6 +1530,20 @@ document.getElementById(contentId).classList.add('active');
 });
 });
 });
+  // Check for hash on page load
+window.addEventListener('load', function() {
+  if (window.location.hash) {
+    const targetElement = document.querySelector(window.location.hash);
+    if (targetElement) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }
+});
 </script>
  <script>
   // Carrusel automático

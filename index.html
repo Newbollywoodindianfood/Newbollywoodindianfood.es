@@ -1525,6 +1525,21 @@ document.getElementById(contentId).classList.add('active');
 });
 });
 });
+    // Interceptar clic en enlace "Menú"
+  const menuLink = document.querySelector('a[href="/menu"]');
+  if (menuLink) {
+    menuLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      history.pushState(null, '', '/menu');
+
+      const target = document.querySelector('#menu');
+      if (target) {
+        const offset = target.offsetTop - 80;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    });
+  }
+});
 </script>
  <script>
   // Carrusel automático
